@@ -102,7 +102,7 @@ if (!is_fleeing && life <= max_life * flee_threshold){
 //--------------------------------
 if (life <= 0){
 	if(multiply_on_death){
-		for ( var = i = 0; i < spawn_count; i++){
+		for (var i = 0; i < spawn_count; i++){
 			instance_create_layer(x,y, "Instances", spawn_obj);
 		}
 	}
