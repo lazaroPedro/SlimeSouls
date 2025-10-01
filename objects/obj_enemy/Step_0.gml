@@ -46,16 +46,16 @@ if (invuln_timer > 0){
 // Patrulha simples
 //--------------------------------
 hspd = move_dir * spd;
-if(instance_place(x + hand, y,obj_enemy)|| place_meeting(x + hspd, y, tilemap_id)){
+if(instance_place(x + hspd, y,obj_enemy)|| place_meeting(x + hspd, y, tilemap_id)){
 	move_dir = move_dir * -1;
 }
 
 //--------------------------------
 // Pulo periódico
 //--------------------------------
-if(jump_timer <= 0 && vspd == 00){
+if(jump_timer <= 0 && vspd == 0){
 	vspd = jump_force;
-	jump_timer = irondom_range(jump_min, jump_max)
+	jump_timer = irandom_range(jump_min, jump_max)
 }
 
 //--------------------------------
@@ -67,8 +67,8 @@ if(hero != noone){
 	if (dist <= melee_range && attack_timer <= 0) {
 		if(!hero.invulnerable){
 			hero.life -= melee_dmg;
-			hero.invulnerable = true;
 			hero.invuln_timer = 30; 
+			hero.invulnerable = true;
 		}
 	attack_timer = attack_cooldown;
 	}
@@ -77,16 +77,19 @@ if(hero != noone){
 //--------------------------------
 // Ataque em área
 //--------------------------------
+
 if (area_timer <= 0 && hero != noone){
 	var dist = point_distance(x,y,hero.x,hero.y);
 	if( dist <= area_range){
 		if(!hero.invulnerable){
 			hero.life -= area_dmg;
 			hero.invuln_timer = 30;
+			hero.invulnerable = true;
 		}
 		area_timer = area_cooldown;
 	}
 }
+
 
 //--------------------------------
 // Fuga estratégica
@@ -98,19 +101,16 @@ if (!is_fleeing && life <= max_life * flee_threshold){
 }
 
 //--------------------------------
-// Multiplicação na morte
+// Morte
 //--------------------------------
 if (life <= 0){
-	if(multiply_on_death){
-		for (var i = 0; i < spawn_count; i++){
-			instance_create_layer(x,y, "Instances", spawn_obj);
-		}
-	}
 	instance_destroy();
 }
+
 //--------------------------------
 // Movimento e colisão
 //--------------------------------
+
 vspd += 0.5;
 var result = sc_collision(x,y,hspd,vspd,spd,move_dir,tilemap_id);
 x = result.x;

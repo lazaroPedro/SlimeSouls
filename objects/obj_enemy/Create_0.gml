@@ -14,7 +14,6 @@ move_dir = 1
 st_move = 0
 tilemap_id = layer_tilemap_get_id("ts_ground");
 
-jump_timer = irandom_range(jump_min, jump_max);
 jump_min = 60;
 jump_max = 120;
 jump_force = -8;
@@ -38,7 +37,4 @@ flee_threshold = 0.25;
 is_fleeing = false;
 flee_speed_mult = 1.3;
 
-multiply_on_death = true;
-spawn_count = 2;
-spawn_obj = obj_enemy_small;
 
