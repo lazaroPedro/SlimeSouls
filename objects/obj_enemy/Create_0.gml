@@ -14,10 +14,11 @@ move_dir = 1
 st_move = 0
 tilemap_id = layer_tilemap_get_id("ts_ground");
 
-jump_timer = irondom_range(jump_min, jump_max);
+jump_timer = irandom_range(jump_min, jump_max);
 jump_min = 60;
 jump_max = 120;
 jump_force = -8;
+jump_timer = irandom_range(jump_min, jump_max);
 
 attack_timer = 0;
 attack_cooldown = 60;
