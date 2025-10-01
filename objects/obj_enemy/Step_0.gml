@@ -63,7 +63,7 @@ if(jump_timer <= 0 && vspd == 00){
 //--------------------------------
 var hero = instance_nearest(x,y, obj_hero);
 if(hero != noone){
-	var dist = point_distance(x, y, hero.x, hero,y);
+	var dist = point_distance(x, y, hero.x, hero.y);
 	if (dist <= melee_range && attack_timer <= 0) {
 		if(!hero.invulnerable){
 			hero.life -= melee_dmg;
