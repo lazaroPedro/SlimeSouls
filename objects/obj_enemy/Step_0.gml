@@ -45,9 +45,8 @@ if (invuln_timer > 0){
 //--------------------------------
 // Patrulha simples
 //--------------------------------
-hspd = move_dir * spd;
-if(instance_place(x + hspd, y,obj_enemy)|| place_meeting(x + hspd, y, tilemap_id)){
-	move_dir = move_dir * -1;
+if(place_meeting(x + hspd, y, tilemap_id)){
+    move_dir = move_dir * -1;
 }
 
 //--------------------------------
@@ -61,17 +60,17 @@ if(jump_timer <= 0 && vspd == 0){
 //--------------------------------
 // Ataque corpo a corpo
 //--------------------------------
-var hero = instance_nearest(x,y, obj_hero);
-if(hero != noone){
-	var dist = point_distance(x, y, hero.x, hero.y);
-	if (dist <= melee_range && attack_timer <= 0) {
-		if(!hero.invulnerable){
-			hero.life -= melee_dmg;
-			hero.invuln_timer = 30; 
-			hero.invulnerable = true;
-		}
-	attack_timer = attack_cooldown;
-	}
+var hero = instance_nearest(x, y, obj_hero);
+if(hero != noone && variable_instance_exists(hero, "invulnerable")){
+    var dist = point_distance(x, y, hero.x, hero.y);
+    if(dist <= melee_range && attack_timer <= 0){
+        if(!hero.invulnerable){
+            hero.life -= melee_dmg;
+            hero.invuln_timer = 30; 
+            hero.invulnerable = true;
+        }
+        attack_timer = attack_cooldown;
+    }
 }
 
 //--------------------------------
