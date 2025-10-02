@@ -1,3 +1,4 @@
+hspd  = move_dir * spd
 if(place_meeting( x + hspd, y, tilemap_id)){
 	move_dir = move_dir * (-1)
 }
@@ -6,8 +7,10 @@ if(place_meeting( x + hspd, y, tilemap_id)){
 if (place_meeting( x, y + 1, tilemap_id)) {
 
 
-	vspd -=10	
+	vspd -=15
 }
+
+
 
 if(cooldown <=0){
 	
@@ -19,6 +22,9 @@ if (instance_place(x + hspd, y + vspd, tilemap_id)){
 
 
 }
+
+
+
 
 
 

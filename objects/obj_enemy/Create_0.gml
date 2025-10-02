@@ -13,9 +13,14 @@ spd = 1.5
 move_dir = 1
 st_move = 0
 tilemap_id = layer_tilemap_get_id("ts_ground");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 532cb0c3ae7a0c0634726af4e924fbac0e45d656
 jump_min = 60;
 jump_max = 120;
+jump_timer = irandom_range(jump_min, jump_max);
+
 jump_force = -8;
 jump_timer = irandom_range(jump_min, jump_max);
 
@@ -37,4 +42,10 @@ flee_threshold = 0.25;
 is_fleeing = false;
 flee_speed_mult = 1.3;
 
+<<<<<<< HEAD
+=======
+multiply_on_death = true;
+spawn_count = 2;
+spawn_obj = obj_enemy
+>>>>>>> 532cb0c3ae7a0c0634726af4e924fbac0e45d656
 

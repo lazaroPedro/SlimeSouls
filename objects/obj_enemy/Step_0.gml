@@ -45,8 +45,14 @@ if (invuln_timer > 0){
 //--------------------------------
 // Patrulha simples
 //--------------------------------
+<<<<<<< HEAD
 if(place_meeting(x + hspd, y, tilemap_id)){
     move_dir = move_dir * -1;
+=======
+hspd = move_dir * spd;
+if(instance_place(x + hspd, y,obj_enemy)|| place_meeting(x + hspd, y, tilemap_id)){
+	move_dir = move_dir * -1;
+>>>>>>> 532cb0c3ae7a0c0634726af4e924fbac0e45d656
 }
 
 //--------------------------------
@@ -60,6 +66,7 @@ if(jump_timer <= 0 && vspd == 0){
 //--------------------------------
 // Ataque corpo a corpo
 //--------------------------------
+<<<<<<< HEAD
 var hero = instance_nearest(x, y, obj_hero);
 if(hero != noone && variable_instance_exists(hero, "invulnerable")){
     var dist = point_distance(x, y, hero.x, hero.y);
@@ -71,6 +78,19 @@ if(hero != noone && variable_instance_exists(hero, "invulnerable")){
         }
         attack_timer = attack_cooldown;
     }
+=======
+var hero = instance_nearest(x,y, obj_hero);
+if(hero != noone){
+	var dist = point_distance(x, y, hero.x, hero.y);
+	if (dist <= melee_range && attack_timer <= 0) {
+		if(!hero.immunity){
+			hero.life -= melee_dmg;
+			hero.immunity = true;
+			hero.invuln_timer = 30; 
+		}
+	attack_timer = attack_cooldown;
+	}
+>>>>>>> 532cb0c3ae7a0c0634726af4e924fbac0e45d656
 }
 
 //--------------------------------
@@ -80,7 +100,7 @@ if(hero != noone && variable_instance_exists(hero, "invulnerable")){
 if (area_timer <= 0 && hero != noone){
 	var dist = point_distance(x,y,hero.x,hero.y);
 	if( dist <= area_range){
-		if(!hero.invulnerable){
+		if(!hero.immunity){
 			hero.life -= area_dmg;
 			hero.invuln_timer = 30;
 			hero.invulnerable = true;
@@ -103,6 +123,14 @@ if (!is_fleeing && life <= max_life * flee_threshold){
 // Morte
 //--------------------------------
 if (life <= 0){
+<<<<<<< HEAD
+=======
+	if(multiply_on_death){
+		for ( var i = 0; i < spawn_count; i++){
+			instance_create_layer(x,y, "Instances", spawn_obj);
+		}
+	}
+>>>>>>> 532cb0c3ae7a0c0634726af4e924fbac0e45d656
 	instance_destroy();
 }
 
