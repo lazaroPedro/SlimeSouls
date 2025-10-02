@@ -46,7 +46,7 @@ if (invuln_timer > 0){
 // Patrulha simples
 //--------------------------------
 hspd = move_dir * spd;
-if(instance_place(x + hand, y,obj_enemy)|| place_meeting(x + hspd, y, tilemap_id)){
+if(instance_place(x + hspd, y,obj_enemy)|| place_meeting(x + hspd, y, tilemap_id)){
 	move_dir = move_dir * -1;
 }
 
@@ -55,7 +55,7 @@ if(instance_place(x + hand, y,obj_enemy)|| place_meeting(x + hspd, y, tilemap_id
 //--------------------------------
 if(jump_timer <= 0 && vspd == 00){
 	vspd = jump_force;
-	jump_timer = irondom_range(jump_min, jump_max)
+	jump_timer = irandom_range(jump_min, jump_max)
 }
 
 //--------------------------------
@@ -65,9 +65,9 @@ var hero = instance_nearest(x,y, obj_hero);
 if(hero != noone){
 	var dist = point_distance(x, y, hero.x, hero.y);
 	if (dist <= melee_range && attack_timer <= 0) {
-		if(!hero.invulnerable){
+		if(!hero.immunity){
 			hero.life -= melee_dmg;
-			hero.invulnerable = true;
+			hero.immunity = true;
 			hero.invuln_timer = 30; 
 		}
 	attack_timer = attack_cooldown;
@@ -80,7 +80,7 @@ if(hero != noone){
 if (area_timer <= 0 && hero != noone){
 	var dist = point_distance(x,y,hero.x,hero.y);
 	if( dist <= area_range){
-		if(!hero.invulnerable){
+		if(!hero.immunity){
 			hero.life -= area_dmg;
 			hero.invuln_timer = 30;
 		}
@@ -102,7 +102,7 @@ if (!is_fleeing && life <= max_life * flee_threshold){
 //--------------------------------
 if (life <= 0){
 	if(multiply_on_death){
-		for ( var = i = 0; i < spawn_count; i++){
+		for ( var i = 0; i < spawn_count; i++){
 			instance_create_layer(x,y, "Instances", spawn_obj);
 		}
 	}

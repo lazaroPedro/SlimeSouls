@@ -13,10 +13,10 @@ spd = 3
 move_dir = 1
 st_move = 0
 tilemap_id = layer_tilemap_get_id("ts_ground");
-
-jump_timer = irondom_range(jump_min, jump_max);
 jump_min = 60;
 jump_max = 120;
+jump_timer = irandom_range(jump_min, jump_max);
+
 jump_force = -8;
 
 attack_timer = 0;
@@ -39,5 +39,5 @@ flee_speed_mult = 1.3;
 
 multiply_on_death = true;
 spawn_count = 2;
-spawn_obj = obj_enemy_small;
+spawn_obj = obj_enemy
 

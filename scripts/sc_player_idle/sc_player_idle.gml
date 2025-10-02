@@ -12,7 +12,11 @@ function sc_player_idle(){
 
 	}
 
-
+if(vspd > 10) {
+if(place_meeting( x, y, tilemap_id)){
+global.life -= 10 
+}
+}
 	
 if (key_jump && place_meeting( x, y + 1, tilemap_id) && global.stamina >= 10) {
     global.stamina -=15;
