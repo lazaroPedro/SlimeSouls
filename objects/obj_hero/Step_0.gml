@@ -22,7 +22,11 @@ if(global.stamina <=50 ){
 global.stamina +=  0.2
 }
 
-
+if(vspd > 10) {
+if(place_meeting( x, y, tilemap_id)){
+global.life -= 10 
+}
+}
 if (instance_place(x + hspd, y + vspd, obj_goto)){
 	
 	room_goto(room_boss)
@@ -33,5 +37,8 @@ y = result.y;
 hspd = result.hspd;
 vspd = result.vspd;
 
-
+if (instance_place(x + hspd, y + vspd, dead)){
+	
+	game_restart()
+}
 
