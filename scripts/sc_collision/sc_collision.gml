@@ -1,29 +1,36 @@
 function sc_collision( x, y, hspd, vspd, spd, move_dir, tilemap_id){
+	
+	
+
+var sprite_bbox_top = sprite_get_bbox_top(sprite_index) - sprite_get_yoffset(sprite_index);
+var sprite_bbox_bottom = sprite_get_bbox_bottom(sprite_index) - sprite_get_yoffset(sprite_index) + 1;
+var sprite_bbox_left = sprite_get_bbox_left(sprite_index) - sprite_get_xoffset(sprite_index);
+var sprite_bbox_right = sprite_get_bbox_right(sprite_index) - sprite_get_xoffset(sprite_index) + 1;
+
+
 vspd += 0.5
 
 var fut_x = x + hspd;
-if (!place_meeting(fut_x , y, tilemap_id)) {
-	
-    x = fut_x;
-} else {
-    var step_x = sign(hspd);
-    while (!place_meeting(x + step_x , y, tilemap_id)) {
-        x += step_x;
+if (place_meeting(x + hspd, y, tilemap_id)) {
+   
+    while (!place_meeting(x + sign(hspd), y, tilemap_id)) {
+        x += sign(hspd)
     }
     hspd = 0;
+} else {
+    x += hspd;
 }
 
-var fut_y = y + vspd;
-if (!place_meeting( x, fut_y,   tilemap_id)) {
-    y = fut_y; 
-} else {
 
+
+if (place_meeting( x, y + vspd,   tilemap_id)) {
 	
-    var step_y = sign(vspd);
-    while (!place_meeting( x, y + step_y,   tilemap_id)) {
-        y += step_y;
+    while (!place_meeting( x, y +sign(vspd),   tilemap_id)) {
+        y += sign(vspd);
     }
     vspd = 0;
+} else{
+	y += vspd
 }
 
 
