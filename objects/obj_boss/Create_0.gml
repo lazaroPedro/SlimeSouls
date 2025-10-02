@@ -23,7 +23,7 @@ state = StateBoss.IDLE
 
 hspd = 0
 vspd = 0
-spd = 3
+spd = 4
 move_dir = 1
 st_move = 30
 tilemap_id = layer_tilemap_get_id("ts_ground");
