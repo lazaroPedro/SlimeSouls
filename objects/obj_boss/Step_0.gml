@@ -1,4 +1,6 @@
 hspd  = move_dir * spd
+ vspd += 0.5
+
 if(place_meeting( x + hspd, y, tilemap_id)){
 	move_dir = move_dir * (-1)
 }

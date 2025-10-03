@@ -1,7 +1,6 @@
 if(life <= 0){
 instance_destroy()
 }
- 
 var hero = instance_place(x, y, obj_hero)
 if (hero && !hero.immunity) {
 	hero.immunity = true
@@ -13,22 +12,17 @@ if (hero && !hero.immunity) {
 	hero.sprite_index = spr_hero_dmg
 	hero.image_blend = c_white
 	global.life -= 10 
-	hero.alarm[0] = 30
+	hero.alarm[0] = 15
 
 }
-if(instance_place(x + hspd, y, obj_enemy)){
+if(steps <=0){
 	move_dir = move_dir * (-1)
+	steps =random_range(100, 200)
 }
+--steps
 
-if(place_meeting( x + hspd, y, tilemap_id)){
-	move_dir = move_dir * (-1)
-}
 
-var result = sc_collision( x, y, hspd, vspd, spd, move_dir, tilemap_id);
-x = result.x;
-y = result.y;
-hspd = result.hspd;
-vspd = result.vspd;
+
 
 //--------------------------------
 // Atualização de timers
@@ -46,14 +40,17 @@ if (invuln_timer > 0){
 // Patrulha simples
 //--------------------------------
 hspd = move_dir * spd;
+ vspd += 0.5
+
 if(instance_place(x + hspd, y,obj_enemy)|| place_meeting(x + hspd, y, tilemap_id)){
 	move_dir = move_dir * -1;
+	hspd = 0
 }
 
 //--------------------------------
 // Pulo periódico
 //--------------------------------
-if(jump_timer <= 0 && vspd == 00){
+if(jump_timer <= 0 && place_meeting( x, y + 1, tilemap_id)){
 	vspd = jump_force;
 	jump_timer = irandom_range(jump_min, jump_max)
 }
@@ -61,7 +58,7 @@ if(jump_timer <= 0 && vspd == 00){
 //--------------------------------
 // Ataque corpo a corpo
 //--------------------------------
-var hero = instance_nearest(x,y, obj_hero);
+
 if(hero != noone){
 	var dist = point_distance(x, y, hero.x, hero.y);
 	if (dist <= melee_range && attack_timer <= 0) {
@@ -94,7 +91,7 @@ if (area_timer <= 0 && hero != noone){
 if (!is_fleeing && life <= max_life * flee_threshold){
 	is_fleeing = true;
 	spd = spd * flee_speed_mult;
-	move_dir = (hero.x < x) ? 1: -1;
+//	move_dir = (hero.x < x) ? 1: -1;
 }
 
 //--------------------------------
@@ -111,8 +108,7 @@ if (life <= 0){
 //--------------------------------
 // Movimento e colisão
 //--------------------------------
-vspd += 0.5;
-var result = sc_collision(x,y,hspd,vspd,spd,move_dir,tilemap_id);
+var result = sc_collision( x, y, hspd, vspd, spd, move_dir, tilemap_id);
 x = result.x;
 y = result.y;
 hspd = result.hspd;

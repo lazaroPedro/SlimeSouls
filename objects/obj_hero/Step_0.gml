@@ -1,6 +1,7 @@
 // --- MOVIMENTO ---
 
 sc_player_input()
+ vspd += 0.5
 
 
 
