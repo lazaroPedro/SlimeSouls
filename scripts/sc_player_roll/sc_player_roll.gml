@@ -1,15 +1,15 @@
 function sc_player_roll() {
-    var roll_speed = 7;        
+    var roll_speed = 5;        
     
-    var iframe_start = 20;     
-    var iframe_end = 5;      
+    var iframe_start = 39;     
+    var iframe_end = 1;      
 
     
     if (roll_time > 0) {
         hspd = image_xscale * roll_speed;
         roll_time--
     } else{
-		roll_time = 30;
+		roll_time = 40;
         immunity = false;
         state = StatePlayer.IDLE;
         hspd = 0;

@@ -17,7 +17,7 @@ life = 50
 gvt = 0.5;
 state = StatePlayer.IDLE
 cooldown = true;
-roll_time = 30
+roll_time = 40
 
 immunity = false;
 

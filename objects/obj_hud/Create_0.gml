@@ -1,3 +1,7 @@
+global.end_sequence = false;
+end_timer = 0;
+end_stage = 0;
+global.cutscene = false;
 view_w = camera_get_view_width(view_camera[0])
 view_h = camera_get_view_height(view_camera[0])
 stamina_max = 50

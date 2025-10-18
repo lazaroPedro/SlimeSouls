@@ -6,6 +6,7 @@ sc_player_input()
 
 
 
+
 switch (state) {
 	case StatePlayer.IDLE: sc_player_idle(); break;
 	case StatePlayer.ATTACK: sc_player_attack(); break;

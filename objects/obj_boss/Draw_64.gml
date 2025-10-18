@@ -10,7 +10,7 @@ var y2  = y1 + lifebar_h;
 
 draw_set_color(c_black);
 draw_set_font(font_boss)
-draw_text(x1 + 30, y1-30, "Rei dos Slimes ");
+draw_text(x1 + 30, y1-30, "Lord of Slimes ");
 draw_set_color(color2);
 draw_rectangle(x1, y1, x2_t, y2, false);
 

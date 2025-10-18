@@ -6,6 +6,6 @@ if(enemy && !array_contains(list_enemy, enemy)){
 
 
 	with (enemy){
-		life -= 50
+		life -= 500
 	}
 }
