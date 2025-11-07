@@ -55,56 +55,7 @@ if(jump_timer <= 0 && place_meeting( x, y + 1, tilemap_id)){
 	jump_timer = irandom_range(jump_min, jump_max)
 }
 
-//--------------------------------
-// Ataque corpo a corpo
-//--------------------------------
 
-if(hero != noone){
-	var dist = point_distance(x, y, hero.x, hero.y);
-	if (dist <= melee_range && attack_timer <= 0) {
-		if(!hero.immunity){
-			hero.life -= melee_dmg;
-			hero.immunity = true;
-			hero.invuln_timer = 30; 
-		}
-	attack_timer = attack_cooldown;
-	}
-}
-
-//--------------------------------
-// Ataque em área
-//--------------------------------
-if (area_timer <= 0 && hero != noone){
-	var dist = point_distance(x,y,hero.x,hero.y);
-	if( dist <= area_range){
-		if(!hero.immunity){
-			hero.life -= area_dmg;
-			hero.invuln_timer = 30;
-		}
-		area_timer = area_cooldown;
-	}
-}
-
-//--------------------------------
-// Fuga estratégica
-//--------------------------------
-if (!is_fleeing && life <= max_life * flee_threshold){
-	is_fleeing = true;
-	spd = spd * flee_speed_mult;
-//	move_dir = (hero.x < x) ? 1: -1;
-}
-
-//--------------------------------
-// Multiplicação na morte
-//--------------------------------
-if (life <= 0){
-	if(multiply_on_death){
-		for ( var i = 0; i < spawn_count; i++){
-			instance_create_layer(x,y, "Instances", spawn_obj);
-		}
-	}
-	instance_destroy();
-}
 //--------------------------------
 // Movimento e colisão
 //--------------------------------

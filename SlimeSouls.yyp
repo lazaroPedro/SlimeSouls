@@ -2,7 +2,7 @@
   "$GMProject":"v1",
   "%Name":"SlimeSouls",
   "AudioGroups":[
-    {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
@@ -31,7 +31,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.1.193",
+    "IDEVersion":"2024.14.0.207",
   },
   "name":"SlimeSouls",
   "resources":[
@@ -55,6 +55,7 @@
     {"id":{"name":"sc_player_roll","path":"scripts/sc_player_roll/sc_player_roll.yy",},},
     {"id":{"name":"spr_attack","path":"sprites/spr_attack/spr_attack.yy",},},
     {"id":{"name":"spr_boss","path":"sprites/spr_boss/spr_boss.yy",},},
+    {"id":{"name":"spr_boss_tired","path":"sprites/spr_boss_tired/spr_boss_tired.yy",},},
     {"id":{"name":"spr_enemy","path":"sprites/spr_enemy/spr_enemy.yy",},},
     {"id":{"name":"spr_enemy_dmg","path":"sprites/spr_enemy_dmg/spr_enemy_dmg.yy",},},
     {"id":{"name":"spr_grass","path":"sprites/spr_grass/spr_grass.yy",},},
