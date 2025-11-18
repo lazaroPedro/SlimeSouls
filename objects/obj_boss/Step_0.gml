@@ -81,7 +81,9 @@ if (hero && !hero.immunity) {
     global.life -= 20;
 }
 
-
+if(life <= 0){
+	game_restart()
+}
 
 if (place_meeting(x + hspd, y, tilemap_id)) {
     move_dir *= -1;

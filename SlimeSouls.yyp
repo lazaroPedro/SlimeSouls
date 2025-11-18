@@ -57,7 +57,6 @@
     {"id":{"name":"spr_boss","path":"sprites/spr_boss/spr_boss.yy",},},
     {"id":{"name":"spr_boss_tired","path":"sprites/spr_boss_tired/spr_boss_tired.yy",},},
     {"id":{"name":"spr_enemy","path":"sprites/spr_enemy/spr_enemy.yy",},},
-    {"id":{"name":"spr_enemy_dmg","path":"sprites/spr_enemy_dmg/spr_enemy_dmg.yy",},},
     {"id":{"name":"spr_grass","path":"sprites/spr_grass/spr_grass.yy",},},
     {"id":{"name":"spr_hero","path":"sprites/spr_hero/spr_hero.yy",},},
     {"id":{"name":"spr_hero_attack","path":"sprites/spr_hero_attack/spr_hero_attack.yy",},},
