@@ -1,45 +1,47 @@
-// --- MOVIMENTO ---
 
-sc_player_input()
- vspd += 0.5
+key_right = keyboard_check(ord("D"));
+key_left  = keyboard_check(ord("A"));
+key_jump  = keyboard_check(ord("W"));
 
-
-
-
-
-switch (state) {
-	case StatePlayer.IDLE: sc_player_idle(); break;
-	case StatePlayer.ATTACK: sc_player_attack(); break;
-	case StatePlayer.ROLL: sc_player_roll(); break;
-	case StatePlayer.DAMAGE: sc_player_damage(); break;
+vspd += 0.5
+move_dir= key_right - key_left;
+hspd = move_dir * spd;
+	
+if(move_dir == 0){
+	sprite_index=  spr_hero
+} else{
+	sprite_index=  spr_hero_mv
+	image_xscale =  sign(hspd) + sign(hspd)
 }
 
+if (key_jump && place_meeting( x, y + 1, tilemap_id)) {
+	vspd = jump_spd;
+
+}
 
 if(global.life <= 0){
 game_restart()
 }
 
-if(global.stamina <=50 ){
-global.stamina +=  0.2
+if(immunity){
+	sprite_index = spr_hero_dmg
 }
 
-if(vspd > 10) {
-if(place_meeting( x, y, tilemap_id)){
-global.life -= 10 
-}
-}
-if (instance_place(x + hspd, y + vspd, obj_goto)){
-	
-	room_goto(room_boss)
-}
-var result = sc_collision( x, y, hspd, vspd, spd, move_dir, tilemap_id);
+var result = sc_collision( x, y, hspd, vspd, move_dir, tilemap_id);
 x = result.x;
 y = result.y;
 hspd = result.hspd;
 vspd = result.vspd;
 
+
+
 if (instance_place(x + hspd, y + vspd, dead)){
 	
 	game_restart()
+}
+
+if (instance_place(x + hspd, y + vspd, obj_goto)){
+	
+	room_goto(room_boss)
 }
 

@@ -1,4 +1,4 @@
-function sc_collision( x, y, hspd, vspd, spd, move_dir, tilemap_id){
+function sc_collision( x, y, hspd, vspd, move_dir, tilemap_id){
 	
 	
 var fut_x = x + hspd;

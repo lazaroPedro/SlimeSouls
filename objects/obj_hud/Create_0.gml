@@ -1,13 +1,12 @@
 view_w = camera_get_view_width(view_camera[0])
 view_h = camera_get_view_height(view_camera[0])
-stamina_max = 50
+
 life_max = 100
 global.life = life_max
-global.stamina = stamina_max
+
 lifebar_w = 300
 lifebar_h = 30
-staminabar_w = 200
-staminabar_h = 30
+
 color1 = make_color_rgb(255, 0, 64)
 color2 = make_color_rgb(19, 19, 19)
 color3 = make_color_rgb(64, 150, 64)

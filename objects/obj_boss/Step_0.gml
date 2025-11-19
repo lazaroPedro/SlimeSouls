@@ -67,7 +67,7 @@ var hero = instance_place(x, y, obj_hero);
 
 if (hero && !hero.immunity) {
     hero.immunity = true;
-    hero.state = StatePlayer.DAMAGE;
+	audio_play_sound(dmg_effect, 1, false)
     hero.vspd = -10;
 
     var mv = hero.move_dir;
@@ -75,12 +75,12 @@ if (hero && !hero.immunity) {
     hero.hspd = mv * -5;
 
     hero.sprite_index = spr_hero_dmg;
-    hero.image_blend = c_white;
     hero.alarm[0] = 30;
 
     global.life -= 20;
 }
 
+life -= 0.1
 if(life <= 0){
 	game_restart()
 }
@@ -93,7 +93,7 @@ if (place_meeting(x + hspd, y, tilemap_id)) {
 
 
 
-var result = sc_collision(x, y, hspd, vspd, spd, move_dir, tilemap_id);
+var result = sc_collision(x, y, hspd, vspd, move_dir, tilemap_id);
 x = result.x;
 y = result.y;
 hspd = result.hspd;
